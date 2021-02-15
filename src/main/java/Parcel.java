@@ -5,17 +5,21 @@ public class Parcel {
     private final int height;
 
     public Parcel(int length, int width, int height) {
-
         this.length = length;
         this.width = width;
         this.height = height;
     }
 
     public int cost() {
-        if (getMaxDimension() < 10) {
+        int maxDim = getMaxDimension();
+        if (maxDim < 10) {
             return 3;
+        } else if (maxDim < 50) {
+            return 8;
+        } else if (maxDim < 100) {
+            return 15;
         } else {
-            return 0;
+            return 25;
         }
     }
 
