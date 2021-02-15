@@ -1,11 +1,18 @@
 public class ExtraLargeParcel extends Parcel {
 
-    public ExtraLargeParcel(int length, int width, int height) {
-        super(length, width, height);
+    public static int baseCost = 25;
+    public static int weightLimit = 10;
+
+    public ExtraLargeParcel(int length, int width, int height, int weight) {
+        super(length, width, height, weight);
     }
 
     @Override
     public int cost() {
-        return 25;
+        if (getWeight() > weightLimit) {
+            return baseCost + (getWeight() - weightLimit) * Parcel.overWeightPrice;
+        }
+
+        return baseCost;
     }
 }

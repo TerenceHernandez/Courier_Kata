@@ -2,18 +2,19 @@ public class ParcelBuilder {
     private int length = 0;
     private int width = 0;
     private int height = 0;
+    private int weight = 0;
 
     private ParcelBuilder(){}
 
     public Parcel build() {
         if (maxDim() < 10) {
-            return new SmallParcel(length, width, height);
+            return new SmallParcel(length, width, height, weight);
         } else if (maxDim() < 50) {
-            return new MediumParcel(length, width, height);
+            return new MediumParcel(length, width, height, weight);
         } else if (maxDim() < 100) {
-            return new LargeParcel(length, width, height);
+            return new LargeParcel(length, width, height, weight);
         } else {
-            return new ExtraLargeParcel(length, width, height);
+            return new ExtraLargeParcel(length, width, height, weight);
         }
     }
 
@@ -33,6 +34,11 @@ public class ParcelBuilder {
 
     public ParcelBuilder withWidth(int width) {
         this.width = width;
+        return this;
+    }
+
+    public ParcelBuilder withWeight(int weight) {
+        this.weight = weight;
         return this;
     }
 

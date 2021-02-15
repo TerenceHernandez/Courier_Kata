@@ -1,11 +1,18 @@
 public class MediumParcel extends Parcel {
 
-    public MediumParcel(int length, int width, int height) {
-        super(length, width, height);
+    public static int baseCost = 8;
+    public static int weightLimit = 3;
+
+    public MediumParcel(int length, int width, int height, int weight) {
+        super(length, width, height, weight);
     }
 
     @Override
     public int cost() {
-        return 8;
+        if (getWeight() > weightLimit) {
+            return baseCost + (getWeight() - weightLimit) * Parcel.overWeightPrice;
+        }
+
+        return baseCost;
     }
 }
