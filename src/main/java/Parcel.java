@@ -1,4 +1,4 @@
-public class Parcel {
+abstract class Parcel {
 
     private final int length;
     private final int width;
@@ -10,18 +10,7 @@ public class Parcel {
         this.height = height;
     }
 
-    public int cost() {
-        int maxDim = getMaxDimension();
-        if (maxDim < 10) {
-            return 3;
-        } else if (maxDim < 50) {
-            return 8;
-        } else if (maxDim < 100) {
-            return 15;
-        } else {
-            return 25;
-        }
-    }
+    abstract public int cost();
 
     public int getHeight() {
         return height;
@@ -35,7 +24,7 @@ public class Parcel {
         return width;
     }
 
-    private int getMaxDimension() {
+    protected int getMaxDimension() {
         return Math.max(getHeight(), Math.max(getLength(), getWidth()));
     }
 }

@@ -14,10 +14,10 @@ public class ParcelTest {
 
         List<Parcel> smallParcels = new ArrayList<>(
                 Arrays.asList(
-                        new Parcel(0, 0, dimension),
-                        new Parcel(0, dimension, 0),
-                        new Parcel(dimension, 0, 0),
-                        new Parcel(dimension, dimension, dimension)
+                        ParcelBuilder.aParcel().withLength(0).withWidth(0).withHeight(dimension).build(),
+                        ParcelBuilder.aParcel().withLength(0).withWidth(dimension).withHeight(0).build(),
+                        ParcelBuilder.aParcel().withLength(dimension).withWidth(0).withHeight(0).build(),
+                        ParcelBuilder.aParcel().withLength(dimension).withWidth(dimension).withHeight(dimension).build()
                 )
         );
 
