@@ -13,6 +13,10 @@ public class Order {
 
     public Order() { }
 
+    public Order(List<Parcel> parcels, boolean speedyShipping) {
+        this.parcels.addAll(parcels);
+        this.speedyShipping = speedyShipping;
+    }
 
     /**
      * totalPrice is 2 * shippingPrice if speedyShipping is selected
@@ -27,7 +31,9 @@ public class Order {
         int totalParcelCost = 0;
 
         for (Parcel p : parcels) {
-            totalParcelCost += p.cost();
+            if (!p.isDiscounted()) {
+                totalParcelCost += p.cost();
+            }
         }
 
         return totalParcelCost;

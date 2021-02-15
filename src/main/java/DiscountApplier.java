@@ -28,10 +28,8 @@ public class DiscountApplier {
     }
 
     private Parcel mixedParcelMania(List<Parcel> parcels) {
-        List<Parcel> smallParcels =
-                parcels.stream().filter(p -> p instanceof Parcel).collect(Collectors.toList());
 
-        return parcelMania(mixedParcelManiaIndex, smallParcels);
+        return parcelMania(mixedParcelManiaIndex, parcels);
     }
 
     private Parcel parcelMania(int everyIndex, List<Parcel> eligibleParcels) {
@@ -59,7 +57,6 @@ public class DiscountApplier {
                 cheapestParcel = p;
             }
         }
-        System.out.println(cheapestParcel);
         return cheapestParcel;
     }
 
