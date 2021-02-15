@@ -1,32 +1,40 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class OrderTestSuite {
+    private Parcel parcel;
+    private Order order;
+    private Order speedyOrder;
 
-    @Test
-    public void orderPriceEqualToTotalPackage() {
-
-        Parcel parcel = ParcelBuilder.aParcel().withLength(10).withWidth(10).withHeight(10).build();
-        Order order = new Order(
+    @BeforeEach
+    public void initTest() {
+        parcel = ParcelBuilder.aParcel().withLength(10).withWidth(10).withHeight(10).build();
+        order = new Order(
                 parcel,
                 false
         );
+        speedyOrder = new Order(
+                parcel,
+                true
+        );
+    }
 
+    @Test
+    public void orderPriceEqualToTotalPackage() {
         assertEquals(parcel.cost(), order.totalPrice());
     }
 
     @Test
     public void speedyOrderDoublesTotalPrice() {
-
-        Parcel parcel = ParcelBuilder.aParcel().withLength(10).withWidth(10).withHeight(10).build();
-        Order order = new Order(
-                parcel,
-                false);
-        Order speedyOrder = new Order(
-                parcel,
-                true);
-
         assertEquals(2 * order.totalPrice(), speedyOrder.totalPrice());
+    }
+
+    @Test
+    public void speedyShippingListedAsSeparateOutputInOrder() {
+        String speedyOrderOutput = speedyOrder.toString();
+        String speedyShippingInfo = speedyOrder.shippingInfo();
+        assertTrue(speedyOrderOutput.contains(speedyShippingInfo));
     }
 }
