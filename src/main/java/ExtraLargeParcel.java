@@ -11,8 +11,8 @@ public class ExtraLargeParcel extends Parcel {
     @Override
     public String toString() {
         if (isDiscounted()) {
-            return "Extra Large Parcel: 0\n";
+            return "Extra Large Parcel: $0\n";
         }
-        return "Extra Large Parcel: " + cost() + '\n';
+        return "Extra Large Parcel: $" + cost() + '\n';
     }
 }

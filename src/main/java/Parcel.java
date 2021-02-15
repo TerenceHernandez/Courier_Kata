@@ -6,6 +6,13 @@ abstract class Parcel {
     private int weightLimit;
     private boolean discounted;
 
+    /**
+     * Parcels are the representation of a customer's parcel
+     * @param weight
+     * @param baseCost
+     * @param overWeightPrice
+     * @param weightLimit
+     */
     public Parcel(int weight, int baseCost, int overWeightPrice, int weightLimit) {
         this.weight = weight;
         this.baseCost = baseCost;
@@ -14,6 +21,10 @@ abstract class Parcel {
         this.discounted = false;
     }
 
+    /**
+     *
+     * @return - The cost of a parcel, before any discount is applied
+     */
     public int cost() {
         if (getWeight() > weightLimit) {
             return baseCost + (getWeight() - weightLimit) * overWeightPrice;

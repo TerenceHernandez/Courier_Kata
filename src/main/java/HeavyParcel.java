@@ -11,8 +11,8 @@ public class HeavyParcel extends Parcel {
     @Override
     public String toString() {
         if (isDiscounted()) {
-            return "Heavy Parcel: 0\n";
+            return "Heavy Parcel: $0\n";
         }
-        return "Heavy Parcel: " + cost() + '\n';
+        return "Heavy Parcel: $" + cost() + '\n';
     }
 }

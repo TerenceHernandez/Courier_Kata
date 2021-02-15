@@ -11,9 +11,9 @@ public class SmallParcel extends Parcel{
     @Override
     public String toString() {
         if (isDiscounted()) {
-            return "Small Parcel: 0\n";
+            return "Small Parcel: $0\n";
         }
-        return "Small Parcel: " + cost() + '\n';
+        return "Small Parcel: $" + cost() + '\n';
     }
 
 }

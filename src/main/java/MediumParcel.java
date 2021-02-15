@@ -11,8 +11,8 @@ public class MediumParcel extends Parcel {
     @Override
     public String toString() {
         if (isDiscounted()) {
-            return "Medium Parcel: 0\n";
+            return "Medium Parcel: $0\n";
         }
-        return "Medium Parcel: " + cost() + '\n';
+        return "Medium Parcel: $" + cost() + '\n';
     }
 }

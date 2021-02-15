@@ -10,6 +10,10 @@ public class DiscountApplier {
 
     private Order order;
 
+    /**
+     * A wrapper around an Order to apply the discounts currently supplied by the courier
+     * @param order
+     */
     public DiscountApplier(Order order) {
         this.order = order;
     }
@@ -32,6 +36,12 @@ public class DiscountApplier {
         return parcelMania(mixedParcelManiaIndex, parcels);
     }
 
+    /**
+     *
+     * @param everyIndex - The item at which the discount is applied at intervals
+     * @param eligibleParcels - The parcels in an order that are eligible for the discount
+     * @return - The CHEAPEST parcel that satisfies the discount
+     */
     private Parcel parcelMania(int everyIndex, List<Parcel> eligibleParcels) {
 
         List<Parcel> discounted = new ArrayList<>();
@@ -63,9 +73,12 @@ public class DiscountApplier {
         return parcels.stream().filter(p -> !p.isDiscounted()).collect(Collectors.toList());
     }
 
+
+    /**
+     * Applies the given discounts currently available
+     */
     public void apply() {
         List<Parcel> parcels = order.getParcels();
-
         parcels = removeDiscountedParcels(parcels);
 
         Parcel sp = smallParcelMania(parcels);

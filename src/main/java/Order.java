@@ -6,6 +6,11 @@ public class Order {
     private final List<Parcel> parcels = new ArrayList<>();
     private boolean speedyShipping;
 
+    /**
+     * A customers' order regarding a single or multiple parcels
+     * @param parcel - A single parcel in an order, @field params denotes ALL parcels in the order
+     * @param speedyShipping - Indicates if an order is subscribed to speedy shipping
+     */
     public Order(Parcel parcel, boolean speedyShipping) {
         this.parcels.add(parcel);
         this.speedyShipping = speedyShipping;
@@ -26,7 +31,6 @@ public class Order {
         return shippingPrice() + speedyShippingPrice();
     }
 
-
     public int shippingPrice() {
         int totalParcelCost = 0;
 
@@ -38,7 +42,6 @@ public class Order {
 
         return totalParcelCost;
     }
-
 
     public int speedyShippingPrice() {
         if (speedyShipping) {
@@ -60,20 +63,24 @@ public class Order {
     public String shippingInfo() {
        return "Order: " + "\n" +
                parcelInfo() +
-               "Shipping price = " + shippingPrice() + "\n";
+               "Shipping price = $" + shippingPrice() + "\n";
     }
 
     public String speedyShippingInfo() {
-        return "Speedy Shipping price = " + speedyShippingPrice() + "\n";
+        return "Speedy Shipping price = $" + speedyShippingPrice() + "\n";
+    }
+
+    public String totalPriceInfo() {
+        return "Total price = $" + totalPrice() + "\n";
     }
 
     @Override
     public String toString() {
 
         if (speedyShipping) {
-            return shippingInfo() + speedyShippingInfo();
+            return shippingInfo() + speedyShippingInfo() + totalPriceInfo();
         }
-        return shippingInfo();
+        return shippingInfo() + totalPriceInfo();
     }
 
     public List<Parcel> getParcels() {
