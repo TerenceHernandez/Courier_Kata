@@ -8,4 +8,12 @@ public class SmallParcel extends Parcel{
         super(weight, baseCost, overWeightPrice, weightLimit);
     }
 
+    @Override
+    public String toString() {
+        if (isDiscounted()) {
+            return "Small Parcel: 0\n";
+        }
+        return "Small Parcel: " + cost() + '\n';
+    }
+
 }

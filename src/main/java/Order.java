@@ -47,14 +47,24 @@ public class Order {
         else return 0;
     }
 
+    public String parcelInfo() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("parcels = \n");
+        for (Parcel p : parcels) {
+            sb.append(p.toString());
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
     public String shippingInfo() {
        return "Order: " + "\n" +
-               "parcel= " + parcels + "\n" +
-               "Shipping price= " + shippingPrice() + "\n";
+               parcelInfo() +
+               "Shipping price = " + shippingPrice() + "\n";
     }
 
     public String speedyShippingInfo() {
-        return "Speedy Shipping price=" + speedyShippingPrice() + "\n";
+        return "Speedy Shipping price = " + speedyShippingPrice() + "\n";
     }
 
     @Override

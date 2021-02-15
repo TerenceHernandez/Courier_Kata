@@ -7,4 +7,12 @@ public class MediumParcel extends Parcel {
     public MediumParcel(int weight) {
         super(weight, baseCost, overWeightPrice, weightLimit);
     }
+
+    @Override
+    public String toString() {
+        if (isDiscounted()) {
+            return "Medium Parcel: 0\n";
+        }
+        return "Medium Parcel: " + cost() + '\n';
+    }
 }

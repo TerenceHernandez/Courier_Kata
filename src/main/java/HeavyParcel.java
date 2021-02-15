@@ -8,4 +8,11 @@ public class HeavyParcel extends Parcel {
         super(weight, baseCost, overWeightPrice, weightLimit);
     }
 
+    @Override
+    public String toString() {
+        if (isDiscounted()) {
+            return "Heavy Parcel: 0\n";
+        }
+        return "Heavy Parcel: " + cost() + '\n';
+    }
 }

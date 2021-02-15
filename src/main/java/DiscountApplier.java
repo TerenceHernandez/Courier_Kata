@@ -38,7 +38,6 @@ public class DiscountApplier {
         for (int i = everyIndex; i < eligibleParcels.size(); i += everyIndex) {
             discounted.add(eligibleParcels.get(i));
         }
-        System.out.println(discounted);
 
         return cheapestParcel(discounted);
     }

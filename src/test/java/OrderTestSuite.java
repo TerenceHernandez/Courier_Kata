@@ -66,7 +66,6 @@ public class OrderTestSuite {
                         ParcelBuilder.aParcel().withHeight(9).build(),
                         ParcelBuilder.aParcel().withHeight(9).build(),
                         ParcelBuilder.aParcel().withHeight(9).build(),
-                        ParcelBuilder.aParcel().withHeight(9).build(),
                         ParcelBuilder.aParcel().withHeight(9).build()
                 )
         );
@@ -74,6 +73,8 @@ public class OrderTestSuite {
         Order order = new Order(parcels, true);
         DiscountApplier applier = new DiscountApplier(order);
         applier.apply();
+
+        System.out.println(order);
 
         assertEquals( 2 * (4 - 1) * sampleSmallParcel.cost(), order.totalPrice());
 

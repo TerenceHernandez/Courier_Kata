@@ -7,4 +7,12 @@ public class LargeParcel extends Parcel {
     public LargeParcel(int weight) {
         super(weight, baseCost, overWeightPrice, weightLimit);
     }
+
+    @Override
+    public String toString() {
+        if (isDiscounted()) {
+            return "Large Parcel: 0\n";
+        }
+        return "Large Parcel: " + cost() + '\n';
+    }
 }
