@@ -1,6 +1,6 @@
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,6 +45,31 @@ public class DiscountApplierTestSuite {
 
         List<Parcel> parcels = order.getParcels();
         assertEquals(0, parcels.get(DiscountApplier.mixedParcelManiaIndex).cost());
+    }
+
+    // Generally, I would want this to have a mock to show that apply()
+    // i.e. discountAppplier.apply() calls removeDiscountedParcels() as a Mock test
+    @Test
+    public void discountNotAppliedTwiceToParcel() {
+
+        List<Parcel> parcelList = new ArrayList<>();
+
+        // Generate random parcels with discounts
+        for (int i = 0; i < 1000; i++) {
+            Parcel randomParcel = ParcelBuilder.aParcel().build();
+
+            if (Math.random() < 0.5) {
+                randomParcel.applyDiscount();
+            }
+            parcelList.add(randomParcel);
+        }
+
+        List<Parcel> parcels = discountAppplier.removeDiscountedParcels(parcelList);
+
+        for (Parcel p : parcels) {
+            assertFalse(p.isDiscounted());
+        }
+
     }
 
 }
