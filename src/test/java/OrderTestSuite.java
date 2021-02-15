@@ -37,4 +37,18 @@ public class OrderTestSuite {
         String speedyShippingInfo = speedyOrder.shippingInfo();
         assertTrue(speedyOrderOutput.contains(speedyShippingInfo));
     }
+
+    @Test
+    public void speedyShippingShouldNotImpactIndividualItemPrict() {
+        int oldParcelCost = parcel.cost();
+
+        Order newSpeedyShipping = new Order(
+                parcel,
+                true
+        );
+
+        int newParcelCost = newSpeedyShipping.getParcel().cost();
+
+        assertEquals(oldParcelCost, newParcelCost);
+    }
 }

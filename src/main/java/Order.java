@@ -8,6 +8,10 @@ public class Order {
         this.speedyShipping = speedyShipping;
     }
 
+    public Parcel getParcel() {
+        return parcel;
+    }
+
     /**
      * totalPrice is 2 * shippingPrice if speedyShipping is selected
      * @return
