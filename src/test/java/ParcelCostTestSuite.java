@@ -6,7 +6,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ParcelTest {
+public class ParcelCostTestSuite {
 
     // Driver code for a parcel cost test
     private void parcelCostTest(Integer maxDimension, Integer minDimension, int cost) {
