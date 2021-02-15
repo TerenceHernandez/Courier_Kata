@@ -85,6 +85,13 @@ public class ParcelTestSuite {
         parcelCostTest(null, 100, weight,
                 ExtraLargeParcel.baseCost + overWeight * Parcel.overWeightPrice);
     }
+
+    @Test
+    public void heavyParcelLimit50AndCost50() {
+        int weight = 52;
+        int overWeight = weight - 50;
+        parcelCostTest(null, 100, weight, HeavyParcel.baseCost + overWeight * 1);
+    }
 }
 
 

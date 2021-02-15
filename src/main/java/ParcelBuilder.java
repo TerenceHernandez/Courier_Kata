@@ -7,7 +7,10 @@ public class ParcelBuilder {
     private ParcelBuilder(){}
 
     public Parcel build() {
-        if (maxDim() < 10) {
+        if (weight >= 50) {
+            return new HeavyParcel(length, width, height, weight);
+        }
+        else if (maxDim() < 10) {
             return new SmallParcel(length, width, height, weight);
         } else if (maxDim() < 50) {
             return new MediumParcel(length, width, height, weight);
