@@ -21,10 +21,6 @@ abstract class Parcel {
     }
 
     public int cost() {
-        if (discounted) {
-            return 0;
-        }
-
         if (getWeight() > weightLimit) {
             return baseCost + (getWeight() - weightLimit) * overWeightPrice;
         }

@@ -10,6 +10,10 @@ public class DiscountApplierTestSuite {
     private Order order = new Order();
     private DiscountApplier discountAppplier = new DiscountApplier(order);
 
+    private void discountedParcelPriceStaysTheSame(Parcel dp) {
+        assertNotEquals(0, dp.cost());
+    }
+
     @Test
     public void smallParcelManiaTest() {
         for (int i = 1; i <= 5; i++) {
@@ -19,7 +23,10 @@ public class DiscountApplierTestSuite {
         discountAppplier.apply();
 
         List<Parcel> parcels = order.getParcels();
-        assertEquals(0, parcels.get(DiscountApplier.smallParcelManiaIndex).cost());
+        Parcel discountedParcel = parcels.get(DiscountApplier.smallParcelManiaIndex);
+
+        assertTrue(discountedParcel.isDiscounted());
+        discountedParcelPriceStaysTheSame(discountedParcel);
     }
 
     @Test
@@ -31,7 +38,10 @@ public class DiscountApplierTestSuite {
         discountAppplier.apply();
 
         List<Parcel> parcels = order.getParcels();
-        assertEquals(0, parcels.get(DiscountApplier.mediumParcelManiaIndex).cost());
+        Parcel discountedParcel = parcels.get(DiscountApplier.mediumParcelManiaIndex);
+
+        assertTrue(discountedParcel.isDiscounted());
+        discountedParcelPriceStaysTheSame(discountedParcel);
     }
 
     @Test
@@ -44,7 +54,10 @@ public class DiscountApplierTestSuite {
         discountAppplier.apply();
 
         List<Parcel> parcels = order.getParcels();
-        assertEquals(0, parcels.get(DiscountApplier.mixedParcelManiaIndex).cost());
+        Parcel discountedParcel = parcels.get(DiscountApplier.mixedParcelManiaIndex);
+
+        assertTrue(discountedParcel.isDiscounted());
+        discountedParcelPriceStaysTheSame(discountedParcel);
     }
 
     // Generally, I would want this to have a mock to show that apply()
