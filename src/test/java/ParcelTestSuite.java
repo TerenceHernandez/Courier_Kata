@@ -59,7 +59,7 @@ public class ParcelTestSuite {
         int overWeight = weight - SmallParcel.weightLimit;
 
         parcelCostTest(9, null, weight,
-                SmallParcel.baseCost + overWeight * Parcel.overWeightPrice);
+                SmallParcel.baseCost + overWeight * SmallParcel.overWeightPrice);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class ParcelTestSuite {
         int weight = 4;
         int overWeight = weight - MediumParcel.weightLimit;
         parcelCostTest(49, null, weight,
-                MediumParcel.baseCost + overWeight * Parcel.overWeightPrice);
+                MediumParcel.baseCost + overWeight * MediumParcel.overWeightPrice);
     }
 
     @Test
@@ -75,7 +75,7 @@ public class ParcelTestSuite {
         int weight = 7;
         int overWeight = weight - LargeParcel.weightLimit;
         parcelCostTest(99, null, weight,
-                LargeParcel.baseCost + overWeight * Parcel.overWeightPrice);
+                LargeParcel.baseCost + overWeight * LargeParcel.overWeightPrice);
     }
 
     @Test
@@ -83,14 +83,15 @@ public class ParcelTestSuite {
         int weight = 11;
         int overWeight = weight - ExtraLargeParcel.weightLimit;
         parcelCostTest(null, 100, weight,
-                ExtraLargeParcel.baseCost + overWeight * Parcel.overWeightPrice);
+                ExtraLargeParcel.baseCost + overWeight * ExtraLargeParcel.overWeightPrice);
     }
 
     @Test
     public void heavyParcelLimit50AndCost50() {
         int weight = 52;
         int overWeight = weight - 50;
-        parcelCostTest(null, 100, weight, HeavyParcel.baseCost + overWeight * 1);
+        parcelCostTest(null, 100, weight,
+                HeavyParcel.baseCost + overWeight * HeavyParcel.overWeightPrice);
     }
 }
 

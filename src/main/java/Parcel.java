@@ -4,35 +4,29 @@ abstract class Parcel {
     private final int width;
     private final int height;
     private int weight;
+    private int baseCost;
+    private int overWeightPrice;
+    private int weightLimit;
 
-    public static final int overWeightPrice = 2;
-
-    public Parcel(int length, int width, int height, int weight) {
+    public Parcel(int length, int width, int height, int weight, int baseCost, int overWeightPrice, int weightLimit) {
         this.length = length;
         this.width = width;
         this.height = height;
         this.weight = weight;
+        this.baseCost = baseCost;
+        this.overWeightPrice = overWeightPrice;
+        this.weightLimit = weightLimit;
     }
 
-    abstract public int cost();
+    public int cost() {
+        if (getWeight() > weightLimit) {
+            return baseCost + (getWeight() - weightLimit) * overWeightPrice;
+        }
 
-    public int getHeight() {
-        return height;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public int getWidth() {
-        return width;
+        return baseCost;
     }
 
     public int getWeight() {
         return weight;
-    }
-
-    protected int getMaxDimension() {
-        return Math.max(getHeight(), Math.max(getLength(), getWidth()));
     }
 }
