@@ -1,18 +1,12 @@
 abstract class Parcel {
 
-    private final int length;
-    private final int width;
-    private final int height;
     private int weight;
     private int baseCost;
     private int overWeightPrice;
     private int weightLimit;
     private boolean discounted;
 
-    public Parcel(int length, int width, int height, int weight, int baseCost, int overWeightPrice, int weightLimit) {
-        this.length = length;
-        this.width = width;
-        this.height = height;
+    public Parcel(int weight, int baseCost, int overWeightPrice, int weightLimit) {
         this.weight = weight;
         this.baseCost = baseCost;
         this.overWeightPrice = overWeightPrice;

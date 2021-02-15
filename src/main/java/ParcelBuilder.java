@@ -8,16 +8,16 @@ public class ParcelBuilder {
 
     public Parcel build() {
         if (weight >= 50) {
-            return new HeavyParcel(length, width, height, weight);
+            return new HeavyParcel(weight);
         }
         else if (maxDim() < 10) {
-            return new SmallParcel(length, width, height, weight);
+            return new SmallParcel(weight);
         } else if (maxDim() < 50) {
-            return new MediumParcel(length, width, height, weight);
+            return new MediumParcel(weight);
         } else if (maxDim() < 100) {
-            return new LargeParcel(length, width, height, weight);
+            return new LargeParcel(weight);
         } else {
-            return new ExtraLargeParcel(length, width, height, weight);
+            return new ExtraLargeParcel(weight);
         }
     }
 
