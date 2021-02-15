@@ -1,7 +1,9 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class OrderTestSuite {
     private Parcel parcel;
@@ -47,7 +49,8 @@ public class OrderTestSuite {
                 true
         );
 
-        int newParcelCost = newSpeedyShipping.getParcel().cost();
+        List<Parcel> orderParcels =  newSpeedyShipping.getParcels();
+        int newParcelCost = orderParcels.get(0).cost();
 
         assertEquals(oldParcelCost, newParcelCost);
     }

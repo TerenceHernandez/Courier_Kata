@@ -1,16 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Order {
 
-    private final Parcel parcel;
-    private final boolean speedyShipping;
+    private final List<Parcel> parcels = new ArrayList<>();
+    private boolean speedyShipping;
 
     public Order(Parcel parcel, boolean speedyShipping) {
-        this.parcel = parcel;
+        this.parcels.add(parcel);
         this.speedyShipping = speedyShipping;
     }
 
-    public Parcel getParcel() {
-        return parcel;
-    }
+    public Order() { }
+
 
     /**
      * totalPrice is 2 * shippingPrice if speedyShipping is selected
@@ -22,7 +24,13 @@ public class Order {
 
 
     public int shippingPrice() {
-        return parcel.cost();
+        int totalParcelCost = 0;
+
+        for (Parcel p : parcels) {
+            totalParcelCost += p.cost();
+        }
+
+        return totalParcelCost;
     }
 
 
@@ -35,7 +43,7 @@ public class Order {
 
     public String shippingInfo() {
        return "Order: " + "\n" +
-               "parcel= " + parcel + "\n" +
+               "parcel= " + parcels + "\n" +
                "Shipping price= " + shippingPrice() + "\n";
     }
 
@@ -50,5 +58,13 @@ public class Order {
             return shippingInfo() + speedyShippingInfo();
         }
         return shippingInfo();
+    }
+
+    public List<Parcel> getParcels() {
+        return parcels;
+    }
+
+    public void add(Parcel parcel) {
+        parcels.add(parcel);
     }
 }
